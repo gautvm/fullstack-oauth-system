@@ -1,8 +1,12 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
+import passport from "passport";
+import session from 'express-session'
+import cors from 'cors'
+import { User } from "@prisma/client";
 
 //Import routes
-import { GitHubOAuthStrategy } from "../routes/Auth/strategies/GitHubOAuthStrategy"
+import { GitHubOAuthStrategy } from "../routes/Auth/strategies/GitHubOAuthStrategy";
 
 export class Server {
   public app: Application;
@@ -15,6 +19,9 @@ export class Server {
 
     //register server base routes
     this.registerRoutes();
+
+    //initializing passport.js
+    this.registerPassport();
 
     dotenv.config();
   }
@@ -33,19 +40,52 @@ export class Server {
     //Log server requests & request method
     this.app.use(async (req, res, next) => {
       console.log(`[${req.method} - ${req.path}]`);
+      res.header("Access-Control-Allow-Origin", "*");
 
       next();
     });
+
+    //cors
+    this.app.use(cors({ origin: true, credentials: true }));
+
+    //Setting up express session
+    this.app.use(
+      session({
+        secret: "secret",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+          httpOnly: true,
+          secure: false,
+          maxAge: 24 * 60 * 60 * 1000,
+        },
+      })
+    );
+
+    //init passport middlewares
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
   }
 
   private registerRoutes() {
     this.app.get("/", (req, res) => {
       res.json({
         success: true,
+        isAuthenticated: req.isAuthenticated(),
         message: "Fullstack OAuth System API",
       });
     });
 
     this.app.use("/api", GitHubOAuthStrategy());
+  }
+
+  private registerPassport() {
+    passport.serializeUser(async (user: any, cb: any) => {
+      const userData: User = user as any;
+
+      cb(null, userData);
+    });
+
+    passport.deserializeUser<string>(async (id, done) => done(null, { id }));
   }
 }
