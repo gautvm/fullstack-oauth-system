@@ -14,7 +14,7 @@ export const GitHubOAuthStrategy = () => {
       {
         clientID: process.env.GITHUB_CLIENT_ID!,
         clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-        callbackURL: "/auth/github/callback",
+        callbackURL: process.env.GITHUB_CALLBACK_URL!,
         scope: ["user:email"],
       },
       async (
@@ -23,6 +23,7 @@ export const GitHubOAuthStrategy = () => {
         profile: any,
         cb: any
       ) => {
+        console.log(profile)
         //Query to check if a user already exists
         const existingUser = await db.user.findFirst({
           where: {
@@ -39,6 +40,7 @@ export const GitHubOAuthStrategy = () => {
             data: {
               provider: "github",
               username: profile.username,
+              email: profile.emails[0].value,
               displayName: profile.displayName,
               profilePicture: profile.photos[0].value,
             },
@@ -65,7 +67,7 @@ export const GitHubOAuthStrategy = () => {
       failureRedirect: "/",
     }),
     (req, res) => {
-      res.redirect("http://localhost:3000");
+      res.redirect(process.env.CLIENT_URL!);
     }
   );
 
