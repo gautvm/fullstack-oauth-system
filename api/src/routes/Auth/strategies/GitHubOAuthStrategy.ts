@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import db from "../../../db/Database";
+import { PassportGitHubUser } from "../../../types/PassportGitHubUser";
 
 //GitHub Authentication Strategy
 export const GitHubOAuthStrategy = () => {
@@ -20,7 +21,7 @@ export const GitHubOAuthStrategy = () => {
       async (
         accessToken: string,
         refreshToken: string,
-        profile: any,
+        profile: PassportGitHubUser,
         cb: any
       ) => {
         console.log(profile)
