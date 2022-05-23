@@ -15,15 +15,14 @@ enum AuthProvider {
 
 // Models
 model User {
-  id                String        @id @default(uuid())
-  email             String        @unique
-  username          String?       @unique
-  password          String?
+  id       String  @id @default(uuid())
+  email    String? @unique
+  username String? @unique
 
-  profilePicture    String?
-  displayName       String
-  provider          AuthProvider
+  profilePicture String?
+  displayName    String
+  provider       AuthProvider
 
-  createdAt         DateTime?     @default(now())
-  updatedAt         DateTime?     @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }

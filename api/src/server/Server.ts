@@ -1,8 +1,8 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
 import passport from "passport";
-import session from 'express-session'
-import cors from 'cors'
+import session from "express-session";
+import cors from "cors";
 import { User } from "@prisma/client";
 
 //Import routes
