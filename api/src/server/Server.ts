@@ -6,7 +6,7 @@ import cors from "cors";
 import { User } from "@prisma/client";
 
 //Import routes
-import { GitHubOAuthStrategy } from "../routes/Auth/strategies/GitHubOAuthStrategy";
+import { GitHubOAuthStrategy } from "../routes/Auth/GitHubOAuthStrategy";
 
 export class Server {
   public app: Application;

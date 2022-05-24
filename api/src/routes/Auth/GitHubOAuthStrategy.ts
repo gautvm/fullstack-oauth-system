@@ -2,8 +2,8 @@ import { Router } from "express";
 import dotenv from "dotenv";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
-import db from "../../../db/Database";
-import { PassportGitHubUser } from "../../../types/PassportGitHubUser";
+import db from "../../db/Database";
+import { PassportGitHubUser } from "../../types/PassportGitHubUser";
 
 //GitHub Authentication Strategy
 export const GitHubOAuthStrategy = () => {
