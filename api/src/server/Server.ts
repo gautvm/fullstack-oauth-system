@@ -7,6 +7,7 @@ import { User } from "@prisma/client";
 
 //Import routes
 import { GitHubOAuthStrategy } from "../routes/Auth/GitHubOAuthStrategy";
+import { Me } from "../routes/User/Me";
 
 export class Server {
   public app: Application;
@@ -76,7 +77,7 @@ export class Server {
       });
     });
 
-    this.app.use("/api", GitHubOAuthStrategy());
+    this.app.use("/api", GitHubOAuthStrategy(), Me());
   }
 
   private registerPassport() {
