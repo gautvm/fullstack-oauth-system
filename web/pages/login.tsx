@@ -10,16 +10,16 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      {!user ? (
+      {user ? (
+        () => {
+          router.push("/");
+        }
+      ) : (
         <button
           onClick={() => router.push("http://localhost:4000/api/auth/github")}
         >
           Continue with GitHub
         </button>
-      ) : (
-        <div>
-          <h1>Welcome {user.id.username}</h1>
-        </div>
       )}
     </div>
   );

@@ -9,7 +9,7 @@ import { isAuthenticated } from "../middlewares/isAuthenticated";
 //Import routes
 import { GitHubOAuthStrategy } from "../routes/Auth/GitHubOAuthStrategy";
 import { Me } from "../routes/User/Me";
-
+import { Logout } from "..//routes/User/Logout";
 
 export class Server {
   public app: Application;
@@ -79,11 +79,14 @@ export class Server {
       });
     });
 
+    //Regular routes
     this.app.use("/api", GitHubOAuthStrategy());
-    this.app.use("/api", isAuthenticated, Me());
+    //Protected routes
+    this.app.use("/api", isAuthenticated, Me(), Logout());
   }
 
   private registerPassport() {
+    //Serialize user data
     passport.serializeUser(async (user: any, cb: any) => {
       const userData: User = user as any;
 
