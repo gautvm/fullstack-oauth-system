@@ -4,10 +4,12 @@ import passport from "passport";
 import session from "express-session";
 import cors from "cors";
 import { User } from "@prisma/client";
+import { isAuthenticated } from "../middlewares/isAuthenticated";
 
 //Import routes
 import { GitHubOAuthStrategy } from "../routes/Auth/GitHubOAuthStrategy";
 import { Me } from "../routes/User/Me";
+
 
 export class Server {
   public app: Application;
@@ -77,7 +79,8 @@ export class Server {
       });
     });
 
-    this.app.use("/api", GitHubOAuthStrategy(), Me());
+    this.app.use("/api", GitHubOAuthStrategy());
+    this.app.use("/api", isAuthenticated, Me());
   }
 
   private registerPassport() {
