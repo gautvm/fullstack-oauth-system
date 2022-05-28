@@ -12,7 +12,7 @@ const Home: NextPage = () => {
     <div>
       {!user ? (
         <button
-          onClick={() => router.push("http://localhost:4000/api/auth/github")}
+          onClick={() => router.push(`${process.env.API_URL}/auth/github`)}
         >
           Continue with GitHub
         </button>
