@@ -9,7 +9,7 @@ import { isAuthenticated } from "../middlewares/isAuthenticated";
 //Import routes
 import { GitHubOAuthStrategy } from "../routes/Auth/GitHubOAuthStrategy";
 import { Me } from "../routes/User/Me";
-import { Logout } from "..//routes/User/Logout";
+import { Logout } from "../routes/User/Logout";
 
 export class Server {
   public app: Application;
