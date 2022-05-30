@@ -6,12 +6,9 @@ interface ID {
   id: string;
   displayName: string;
   username: string;
+  email: string;
   profilePicture: string;
-  photos: Photo[];
   provider: string;
   _json: any;
 }
 
-interface Photo {
-  value: string;
-}

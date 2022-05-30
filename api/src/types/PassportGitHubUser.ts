@@ -4,8 +4,8 @@ export interface PassportGitHubUser {
   displayName: string;
   username: string;
   profileUrl: string;
-  emails: Email[];
-  photos: Email[];
+  emails: Value[];
+  photos: Value[];
   provider: string;
   _raw: string;
   _json: JSON;
@@ -46,6 +46,6 @@ export interface JSON {
   updated_at: Date;
 }
 
-export interface Email {
+export interface Value {
   value: string;
 }
