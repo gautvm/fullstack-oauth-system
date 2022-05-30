@@ -2,13 +2,13 @@ export interface User {
   id: ID;
 }
 
-interface ID {
+export interface ID {
   id: string;
-  displayName: string;
-  username: string;
   email: string;
+  username: string;
   profilePicture: string;
+  displayName: string;
   provider: string;
-  _json: any;
+  createdAt: Date;
+  updatedAt: Date;
 }
-
