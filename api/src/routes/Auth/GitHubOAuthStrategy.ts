@@ -24,7 +24,6 @@ export const GitHubOAuthStrategy = () => {
         profile: PassportGitHubUser,
         cb: any
       ) => {
-        console.log(profile);
         //Query to check if a user already exists
         const existingUser = await db.user.findUnique({
           where: {

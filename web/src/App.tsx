@@ -9,9 +9,9 @@ function App() {
 
   return (
     <div>
-      {user.id ? (
+      {user ? (
         <div>
-          <h1>Welcome {user.id.username}</h1>
+          <h1>Welcome {user.id.email}</h1>
         </div>
       ) : (
         <div>

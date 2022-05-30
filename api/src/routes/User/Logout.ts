@@ -4,7 +4,7 @@ import { Router } from "express";
 export const Logout = () => {
   const router = Router();
 
-  router.get("/", async (req, res) => {
+  router.get("/user/logout", async (req, res) => {
     if (req.user) {
       req.session.destroy(() => {
         req.logout();
