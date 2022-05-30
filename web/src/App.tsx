@@ -1,25 +1,24 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
 import { User } from "./types/User";
 
 function App() {
   const user = useContext(UserContext) as User;
-  let navigate = useNavigate();
 
   return (
     <div>
-      {user ? (
+      {!user == undefined ? (
         <div>
           <h1>Welcome {user.id.email}</h1>
         </div>
       ) : (
         <div>
-          <button
-            onClick={() => navigate("http://localhost:4000/api/auth/github")}
-          >
-            Continue with GitHub
-          </button>
+          <a href="http://localhost:4000/api/auth/github">
+            Continue With GitHub
+          </a>
+          <a href="http://localhost:4000/api/auth/google">
+            Continue With Google
+          </a>
         </div>
       )}
     </div>
