@@ -8,8 +8,10 @@ import { isAuthenticated } from "../middlewares/isAuthenticated";
 
 //Import routes
 import { GitHubOAuthStrategy } from "../routes/Auth/GitHubOAuthStrategy";
+import { GoogleOAuthStrategy } from "../routes/Auth/GoogleOAuthStrategy";
 import { Me } from "../routes/User/Me";
 import { Logout } from "../routes/User/Logout";
+
 
 export class Server {
   public app: Application;
@@ -80,7 +82,7 @@ export class Server {
     });
 
     //Regular routes
-    this.app.use("/api", GitHubOAuthStrategy());
+    this.app.use("/api", GitHubOAuthStrategy(), GoogleOAuthStrategy());
     //Protected routes
     this.app.use("/api", isAuthenticated, Me(), Logout());
   }
