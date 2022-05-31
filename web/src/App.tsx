@@ -7,16 +7,20 @@ function App() {
 
   return (
     <div>
-      {!user == undefined ? (
+      {user ? (
         <div>
-          <h1>Welcome {user.id.email}</h1>
+          <h1>Welcome {user.id.username}</h1>
+
+          <a href={`${process.env.API_URL}/user/logout`}>
+            Logout
+          </a>
         </div>
       ) : (
         <div>
-          <a href="http://localhost:4000/api/auth/github">
+          <a href={`${process.env.API_URL}/auth/github`}>
             Continue With GitHub
           </a>
-          <a href="http://localhost:4000/api/auth/google">
+          <a href={`${process.env.API_URL}/auth/google`}>
             Continue With Google
           </a>
         </div>

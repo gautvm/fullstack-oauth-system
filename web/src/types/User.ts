@@ -1,5 +1,6 @@
 export interface User {
   id: ID;
+ success: boolean;
 }
 
 export interface ID {
