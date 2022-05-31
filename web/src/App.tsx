@@ -11,16 +11,16 @@ function App() {
         <div>
           <h1>Welcome {user.id.username}</h1>
 
-          <a href={`${process.env.API_URL}/user/logout`}>
+          <a href={`${process.env.REACT_APP_API_URL}/user/logout`}>
             Logout
           </a>
         </div>
       ) : (
         <div>
-          <a href={`${process.env.API_URL}/auth/github`}>
+          <a href={`${process.env.REACT_APP_API_URL}/auth/github`}>
             Continue With GitHub
           </a>
-          <a href={`${process.env.API_URL}/auth/google`}>
+          <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
             Continue With Google
           </a>
         </div>
