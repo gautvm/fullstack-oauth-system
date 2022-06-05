@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
-import { User } from "./entities/User";
+import { UserEntity } from "./entities/UserEntity";
 
 function App() {
   // const user = useContext(UserContext) as User;

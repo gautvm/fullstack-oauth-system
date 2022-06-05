@@ -1,5 +1,5 @@
-export interface User {
- id: ID;
+export interface UserEntity {
+  id: ID;
 }
 
 export interface ID {
