@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
-import { User } from "./types/User";
+import { User } from "./entities/User";
 
 function App() {
-  const user = useContext(UserContext) as User;
+  // const user = useContext(UserContext) as User;
+  // console.log(user); 
 
   return (
     <div>
-      {user ? (
+      {/* {user ? (
         <div>
           <h1>Welcome {user.id.username}</h1>
 
@@ -24,7 +25,8 @@ function App() {
             Continue With Google
           </a>
         </div>
-      )}
+      )} */}
+      <h1 className="text-red-500">Hello</h1>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { createContext, useState, useEffect } from "react";
-import { User } from "../types/User";
+import { User } from "../entities/User";
 import { api } from "../utils/api";
 
 export const UserContext = createContext({});
