@@ -1,6 +1,4 @@
-import { AxiosResponse } from "axios";
-import { createContext, useState, useEffect } from "react";
-import { UserEntity } from "../entities/UserEntity";
+import React, { createContext, useState, useEffect } from "react";
 import { api } from "../utils/api";
 
 export const UserContext = createContext({});
@@ -9,14 +7,14 @@ export const UserContextComponent = (props: any) => {
 
   useEffect(() => {
     (async () => {
-      const { data }: AxiosResponse<UserEntity> = await api({
+      const { data } = await api({
         method: "GET",
         url: "/user/me",
         withCredentials: true,
       });
 
       if (data) {
-        setUser(data);
+        setUser(data)
       }
     })();
   }, []);
