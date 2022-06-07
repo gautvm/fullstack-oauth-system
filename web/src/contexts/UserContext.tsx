@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import { api } from "../utils/api";
 
 export const UserContext = createContext({});
@@ -14,7 +14,7 @@ export const UserContextComponent = (props: any) => {
       });
 
       if (data) {
-        setUser(data)
+        setUser(data.id)
       }
     })();
   }, []);
