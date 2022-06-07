@@ -1,11 +1,9 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { UserEntity } from "../entities/UserEntity";
 
 export const Navbar = () => {
   const user = useContext(UserContext) as UserEntity;
-  console.log(user)
-  const [menuVisibility, setMenuVisibility] = useState(false);
 
   return (
     <div className="flex items-center justify-between h-16 px-6 py-4 border">
@@ -16,12 +14,19 @@ export const Navbar = () => {
       </div>
       {user ? (
         <div>
-          <img
-            src={user.avatarUrl}
-            alt=""
-            width={40}
-            className="rounded-full"
-          />
+          <div className="flex items-center gap-2">
+            <div className="pr-4">
+              <a href={`${process.env.REACT_APP_API_URL}/user/logout`}>
+                <p className="font-bold">Logout</p>
+              </a>
+            </div>
+            <img
+              src={user.avatarUrl}
+              alt="User Avatar Url"
+              width={35}
+              className="rounded-full"
+            />
+          </div>
         </div>
       ) : (
         ""
