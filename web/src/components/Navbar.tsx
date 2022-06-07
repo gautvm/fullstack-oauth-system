@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { UserEntity } from "../entities/UserEntity";
+import { Button } from "./Button";
 
 export const Navbar = () => {
   const user = useContext(UserContext) as UserEntity;
@@ -16,9 +17,7 @@ export const Navbar = () => {
         <div>
           <div className="flex items-center gap-2">
             <div className="pr-4">
-              <a href={`${process.env.REACT_APP_API_URL}/user/logout`}>
-                <p className="font-bold">Logout</p>
-              </a>
+              <Button>Logout</Button>
             </div>
             <img
               src={user.avatarUrl}
@@ -29,7 +28,7 @@ export const Navbar = () => {
           </div>
         </div>
       ) : (
-        ""
+        <Button>Login</Button>
       )}
     </div>
   );
