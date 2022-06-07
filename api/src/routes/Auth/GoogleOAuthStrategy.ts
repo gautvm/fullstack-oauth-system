@@ -36,7 +36,7 @@ export const GoogleOAuthStrategy = () => {
               provider: "google",
               email: profile._json.email,
               displayName: profile.displayName,
-              profilePicture: profile.photos[0].value,
+              avatarUrl: profile.photos[0].value,
             },
           });
 

@@ -42,7 +42,7 @@ export const GitHubOAuthStrategy = () => {
               username: profile.username,
               email: profile.emails[0].value,
               displayName: profile.displayName,
-              profilePicture: profile.photos[0].value,
+              avatarUrl: profile.photos[0].value,
             },
           });
 

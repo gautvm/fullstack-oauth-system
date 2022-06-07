@@ -4,6 +4,7 @@ import { UserEntity } from "../entities/UserEntity";
 
 export const Navbar = () => {
   const user = useContext(UserContext) as UserEntity;
+  console.log(user)
   const [menuVisibility, setMenuVisibility] = useState(false);
 
   return (
@@ -16,7 +17,7 @@ export const Navbar = () => {
       {user ? (
         <div>
           <img
-            src={user.profilePicture}
+            src={user.avatarUrl}
             alt=""
             width={40}
             className="rounded-full"

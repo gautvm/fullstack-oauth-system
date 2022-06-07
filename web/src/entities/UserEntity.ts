@@ -4,7 +4,7 @@ export interface UserEntity {
   email: string;
 
   username: string;
-  profilePicture: string;
+  avatarUrl: string;
   displayName: string;
 
   createdAt: Date;
