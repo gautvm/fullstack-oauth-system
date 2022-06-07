@@ -14,7 +14,7 @@ export const UserContextComponent = (props: any) => {
       });
 
       if (data) {
-        setUser(data.id)
+        setUser(data.id);
       }
     })();
   }, []);
