@@ -4,13 +4,11 @@ import { Login } from "./pages/Login";
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         {/* replace with home component later */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 

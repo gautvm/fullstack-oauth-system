@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { useAuth } from "../contexts/AuthContext";
 import { UserEntity } from "../entities/UserEntity";
 import { Button } from "./Button";
 
 export const Navbar = () => {
-  const user = useContext(UserContext) as UserEntity;
+  const { user, login, logout } = useAuth();
 
   return (
     <div className="flex items-center justify-between h-16 px-6 py-4 border">
@@ -17,7 +17,7 @@ export const Navbar = () => {
         <div>
           <div className="flex items-center gap-2">
             <div className="pr-4">
-              <Button href={`${process.env.REACT_APP_API_URL}/user/logout`}>
+              <Button onClick={() => logout()}>
                 Logout
               </Button>
             </div>
@@ -30,7 +30,7 @@ export const Navbar = () => {
           </div>
         </div>
       ) : (
-        <Button href="/login">Login</Button>
+        <Button onClick={() => login("github")}>Login</Button>
       )}
     </div>
   );
