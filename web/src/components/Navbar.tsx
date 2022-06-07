@@ -17,7 +17,9 @@ export const Navbar = () => {
         <div>
           <div className="flex items-center gap-2">
             <div className="pr-4">
-              <Button>Logout</Button>
+              <Button href={`${process.env.REACT_APP_API_URL}/user/logout`}>
+                Logout
+              </Button>
             </div>
             <img
               src={user.avatarUrl}
@@ -28,7 +30,7 @@ export const Navbar = () => {
           </div>
         </div>
       ) : (
-        <Button>Login</Button>
+        <Button href="/login">Login</Button>
       )}
     </div>
   );
