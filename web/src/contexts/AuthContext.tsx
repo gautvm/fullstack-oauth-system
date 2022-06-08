@@ -31,7 +31,7 @@ export function AuthContextProvider({
 
   useEffect(() => {
     setLoading(true);
-    console.log(loading)
+    console.log(loading);
 
     try {
       (async () => {
