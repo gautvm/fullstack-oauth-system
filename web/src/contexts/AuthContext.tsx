@@ -5,7 +5,6 @@ import {
   createContext,
   ReactNode,
 } from "react";
-import { useNavigate } from "react-router-dom";
 import { ProviderEntity } from "../entities/ProviderEntity";
 import { UserEntity } from "../entities/UserEntity";
 import { api } from "../utils/api";
@@ -29,12 +28,12 @@ export function AuthContextProvider({
   const [user, setUser] = useState<UserEntity>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
-  let navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
+
     try {
       (async () => {
-        setLoading(true);
 
         const { data } = await api({
           method: "GET",
@@ -44,40 +43,32 @@ export function AuthContextProvider({
 
         if (data) {
           setUser(data.id);
-          setLoading(false);
         }
       })();
     } catch (error) {
       setError(error);
     }
+
+    setLoading(false);
   }, []);
 
   const login = async (provider: ProviderEntity) => {
+    setLoading(true);
+
     try {
-      setLoading(true);
-
-      await api({
-        method: "GET",
-        url: `/auth/${provider}`,
-      })
-
-      navigate("/")
-      setLoading(false);
+      window.location.assign(`${process.env.REACT_APP_API_URL}/auth/${provider}`)
     } catch (error) {
       setError(error);
     }
+
+    setLoading(false);
   };
 
   const logout = async () => {
     try {
-      await api({
-        method: "GET",
-        url: "/user/logout",
-        withCredentials: true,
-      });
+      window.location.assign(`${process.env.REACT_APP_API_URL}/user/logout`)
 
       setUser(undefined)
-      navigate("/")
     } catch (error) {
       setError(error);
     }
