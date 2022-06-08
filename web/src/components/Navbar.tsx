@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { Button } from "./Button";
 
 export const Navbar = () => {
-  const { user, loading, logout } = useAuth();
+  const { user, loading } = useAuth();
   let navigate = useNavigate();
 
   return (
@@ -17,7 +17,14 @@ export const Navbar = () => {
         <div>
           <div className="flex items-center gap-2">
             <div className="pr-4">
-              <Button color="blue" onClick={() => logout()}>
+              <Button
+                color="blue"
+                onClick={() =>
+                  window.location.assign(
+                    `${process.env.REACT_APP_API_URL}/user/logout`
+                  )
+                }
+              >
                 {loading ? "Loading..." : "Logout"}
               </Button>
             </div>

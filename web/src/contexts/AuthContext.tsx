@@ -5,7 +5,6 @@ import {
   createContext,
   ReactNode,
 } from "react";
-import { ProviderEntity } from "../entities/ProviderEntity";
 import { UserEntity } from "../entities/UserEntity";
 import { api } from "../utils/api";
 
@@ -13,9 +12,6 @@ interface AuthContextEntity {
   user?: UserEntity;
   loading: boolean;
   error?: any;
-
-  login: (provider: ProviderEntity) => Promise<void>;
-  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextEntity>({} as AuthContextEntity);
@@ -52,36 +48,8 @@ export function AuthContextProvider({
     setLoading(false);
   }, []);
 
-  const login = async (provider: ProviderEntity) => {
-    setLoading(true);
-
-    try {
-      window.location.assign(
-        `${process.env.REACT_APP_API_URL}/auth/${provider}`
-      );
-    } catch (error) {
-      setError(error);
-    }
-
-    setLoading(false);
-  };
-
-  const logout = async () => {
-    setLoading(true);
-
-    try {
-      window.location.assign(`${process.env.REACT_APP_API_URL}/user/logout`);
-
-      setUser(undefined);
-    } catch (error) {
-      setError(error);
-    }
-
-    setLoading(false);
-  };
-
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, error }}>
       {children}
     </AuthContext.Provider>
   );
