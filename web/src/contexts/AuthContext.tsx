@@ -30,11 +30,8 @@ export function AuthContextProvider({
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setLoading(true);
-
     try {
       (async () => {
-
         const { data } = await api({
           method: "GET",
           url: "/user/me",
@@ -42,14 +39,12 @@ export function AuthContextProvider({
         });
 
         if (data) {
-          setUser(data.id);
+          return setUser(data.id);
         }
       })();
     } catch (error) {
       setError(error);
     }
-
-    setLoading(false);
   }, []);
 
   const login = async (provider: ProviderEntity) => {
