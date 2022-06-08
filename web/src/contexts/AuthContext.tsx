@@ -30,6 +30,9 @@ export function AuthContextProvider({
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
+    console.log(loading)
+
     try {
       (async () => {
         const { data } = await api({
@@ -45,13 +48,17 @@ export function AuthContextProvider({
     } catch (error) {
       setError(error);
     }
+
+    setLoading(false);
   }, []);
 
   const login = async (provider: ProviderEntity) => {
     setLoading(true);
 
     try {
-      window.location.assign(`${process.env.REACT_APP_API_URL}/auth/${provider}`)
+      window.location.assign(
+        `${process.env.REACT_APP_API_URL}/auth/${provider}`
+      );
     } catch (error) {
       setError(error);
     }
@@ -60,18 +67,24 @@ export function AuthContextProvider({
   };
 
   const logout = async () => {
-    try {
-      window.location.assign(`${process.env.REACT_APP_API_URL}/user/logout`)
+    setLoading(true);
 
-      setUser(undefined)
+    try {
+      window.location.assign(`${process.env.REACT_APP_API_URL}/user/logout`);
+
+      setUser(undefined);
     } catch (error) {
       setError(error);
     }
+
+    setLoading(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout}}>{children}</AuthContext.Provider>
-  )
+    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export const useAuth = () => {

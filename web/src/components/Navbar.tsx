@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { UserEntity } from "../entities/UserEntity";
 import { Button } from "./Button";
 
 export const Navbar = () => {
-  const { user, login, logout } = useAuth();
+  const { user, loading, login, logout } = useAuth();
+  console.log(loading);
 
   return (
     <div className="flex items-center justify-between h-16 px-6 py-4 border">
@@ -18,19 +17,25 @@ export const Navbar = () => {
           <div className="flex items-center gap-2">
             <div className="pr-4">
               <Button onClick={() => logout()}>
-                Logout
+                {loading ? "Loading..." : "Logout"}
               </Button>
             </div>
-            <img
-              src={user.avatarUrl}
-              alt="User Avatar Url"
-              width={35}
-              className="rounded-full"
-            />
+            {loading ? (
+              "Loading..."
+            ) : (
+              <img
+                src={user.avatarUrl}
+                alt="User Avatar Url"
+                width={35}
+                className="rounded-full"
+              />
+            )}
           </div>
         </div>
       ) : (
-        <Button onClick={() => login("github")}>Login</Button>
+        <Button onClick={() => login("github")}>
+          {loading ? "Loading..." : "Login"}
+        </Button>
       )}
     </div>
   );
