@@ -19,11 +19,11 @@ export const Navbar = () => {
             <div className="pr-4">
               <Button
                 color="blue"
-                onClick={() =>
+                onClick={() => {
                   window.location.assign(
                     `${process.env.REACT_APP_API_URL}/user/logout`
-                  )
-                }
+                  );
+                }}
               >
                 {loading ? "Loading..." : "Logout"}
               </Button>

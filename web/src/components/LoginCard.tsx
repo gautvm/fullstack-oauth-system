@@ -12,18 +12,22 @@ export const LoginCard = () => {
         <Button
           className="w-full h-12"
           color="black"
-          onClick={() =>  window.location.assign(
-            `${process.env.REACT_APP_API_URL}/auth/github`
-          )}
+          onClick={() =>
+            window.location.assign(
+              `${process.env.REACT_APP_API_URL}/auth/github`
+            )
+          }
         >
           Continue With GitHub
         </Button>
         <Button
           className="w-full h-12"
           color="blue"
-          onClick={() =>  window.location.assign(
-            `${process.env.REACT_APP_API_URL}/auth/google`
-          )}
+          onClick={() =>
+            window.location.assign(
+              `${process.env.REACT_APP_API_URL}/auth/google`
+            )
+          }
         >
           Continue With Google
         </Button>
