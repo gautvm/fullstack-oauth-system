@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { ButtonEntity } from "../entities/ButtonEntity";
+import { Button } from "./Button";
 
 export const Navbar = () => {
   const { user, loading, logout } = useAuth();
@@ -17,7 +17,9 @@ export const Navbar = () => {
         <div>
           <div className="flex items-center gap-2">
             <div className="pr-4">
-            <NavbarButton onClick={() => logout()}>{loading ? "Loading..." : "Logout"}</NavbarButton>
+              <Button color="blue" onClick={() => logout()}>
+                {loading ? "Loading..." : "Logout"}
+              </Button>
             </div>
             {loading ? (
               "Loading..."
@@ -32,16 +34,10 @@ export const Navbar = () => {
           </div>
         </div>
       ) : (
-        <NavbarButton onClick={() => navigate("/login")}>{loading ? "Loading..." : "Login"}</NavbarButton>
+        <Button color="blue" onClick={() => navigate("/login")}>
+          {loading ? "Loading..." : "Login"}
+        </Button>
       )}
     </div>
-  );
-};
-
-const NavbarButton: React.FC<ButtonEntity> = ({ children }) => {
-  return (
-    <a className="border border-blue-500 bg-blue-500 text-white rounded-md px-3 py-1 m-2 transition duration-500 ease select-none hover:bg-blue-600 focus:outline-none focus:shadow-outline">
-      {children}
-    </a>
   );
 };
