@@ -10,9 +10,9 @@ export const Logout = () => {
         req.logout();
       });
 
-      res.redirect(process.env.CLIENT_URL!);
+      res.redirect(`${process.env.CLIENT_URL!}/login`);
     } else {
-      res.redirect(process.env.CLIENT_URL!);
+      res.redirect(`${process.env.CLIENT_URL!}/login`);
     }
   });
 
