@@ -9,10 +9,12 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 };
 
 function App() {
+  const { isAuthenticated } = useAuth();
+  
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/"/> : <Login />} />
       <Route
         path="/private"
         element={
