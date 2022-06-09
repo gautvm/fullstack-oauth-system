@@ -10,6 +10,7 @@ import { api } from "../utils/api";
 
 interface AuthContextEntity {
   user?: UserEntity;
+  isAuthenticated: string;
   loading: boolean;
   error?: any;
 
@@ -27,6 +28,7 @@ export function AuthContextProvider({
   const [user, setUser] = useState<UserEntity>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
+  const isAuthenticated = localStorage.getItem("isAuthenticated") as string
 
   useEffect(() => {
     setLoading(true);
@@ -79,7 +81,7 @@ export function AuthContextProvider({
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, error, login, logout, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
