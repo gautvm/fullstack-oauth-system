@@ -1,4 +1,4 @@
-export interface PassportGitHubUser {
+export interface PassportGitHubUserEntity {
   id: string;
   nodeId: string;
   displayName: string;

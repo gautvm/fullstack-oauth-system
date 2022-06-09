@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import db from "../../db/Database";
-import { PassportGitHubUser } from "../../types/PassportGitHubUser";
+import { PassportGitHubUserEntity } from "../../entities/PassportGitHubUserEntity";
 
 //GitHub Authentication Strategy
 export const GitHubOAuthStrategy = () => {
@@ -21,7 +21,7 @@ export const GitHubOAuthStrategy = () => {
       async (
         accessToken: string,
         refreshToken: string,
-        profile: PassportGitHubUser,
+        profile: PassportGitHubUserEntity,
         cb: any
       ) => {
         //Query to check if a user already exists

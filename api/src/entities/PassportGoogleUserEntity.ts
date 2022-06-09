@@ -1,4 +1,4 @@
-export interface PassportGoogleUser {
+export interface PassportGoogleUserEntity {
   id: string;
   displayName: string;
   name: Name;

@@ -12,7 +12,6 @@ import { GoogleOAuthStrategy } from "../routes/Auth/GoogleOAuthStrategy";
 import { Me } from "../routes/User/Me";
 import { Logout } from "../routes/User/Logout";
 
-
 export class Server {
   public app: Application;
 

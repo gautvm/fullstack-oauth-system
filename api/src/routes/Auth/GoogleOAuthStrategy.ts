@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import passport from "passport";
-import { PassportGoogleUser } from "../../types/PassportGoogleUser";
+import { PassportGoogleUserEntity } from "../../entities/PassportGoogleUserEntity";
 import db from "../../db/Database";
 
 //Google Authentication Strategy
@@ -16,7 +16,7 @@ export const GoogleOAuthStrategy = () => {
       async (
         accessToken: string,
         refreshToken: string,
-        profile: PassportGoogleUser,
+        profile: PassportGoogleUserEntity,
         cb: any
       ) => {
         //Query to check if a user already exists
