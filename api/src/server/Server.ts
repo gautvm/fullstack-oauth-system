@@ -55,7 +55,7 @@ export class Server {
     //Setting up express session
     this.app.use(
       session({
-        secret: "secret",
+        secret: process.env.SESSION_SECRET!,
         resave: false,
         saveUninitialized: false,
         cookie: {
