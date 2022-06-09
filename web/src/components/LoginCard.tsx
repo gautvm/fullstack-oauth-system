@@ -3,7 +3,7 @@ import { Button } from "./Button";
 
 export const LoginCard = () => {
   const { login } = useAuth();
-  
+
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="bg-white w-96 h-auto rounded-lg pt-8 pb-8 px-8 shadow-lg flex flex-col items-center">

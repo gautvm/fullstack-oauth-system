@@ -10,7 +10,12 @@ export const Navbar = () => {
     <div className="flex items-center justify-between h-16 px-6 py-4 border">
       <div className="flex items-center justify-between h-16 pb-1">
         <div className="pt-1">
-          <p className="font-semibold cursor-pointer">Company Logo</p>
+          <p
+            className="font-semibold cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            Company Logo
+          </p>
         </div>
       </div>
       {user ? (

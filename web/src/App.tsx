@@ -15,7 +15,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={isAuthenticated ? <Navigate to="/"/> : <Login />} />
+      <Route
+        path="/login"
+        element={isAuthenticated ? <Navigate to="/" /> : <Login />}
+      />
       <Route
         path="/protected"
         element={
@@ -27,6 +30,5 @@ function App() {
     </Routes>
   );
 }
-
 
 export default App;

@@ -28,7 +28,7 @@ export function AuthContextProvider({
   const [user, setUser] = useState<UserEntity>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
-  const isAuthenticated = localStorage.getItem("isAuthenticated") as string
+  const isAuthenticated = localStorage.getItem("isAuthenticated") as string;
 
   useEffect(() => {
     setLoading(true);
@@ -81,7 +81,9 @@ export function AuthContextProvider({
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ user, loading, error, login, logout, isAuthenticated }}
+    >
       {children}
     </AuthContext.Provider>
   );
