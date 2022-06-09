@@ -1,16 +1,16 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "./contexts/AuthContext";
+import { useAuthContext } from "./contexts/AuthContext";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Protected } from "./pages/Protected";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuthContext();
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 function App() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuthContext();
 
   return (
     <Routes>

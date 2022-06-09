@@ -1,8 +1,8 @@
-import { useAuth } from "../contexts/AuthContext";
+import { useAuthContext } from "../contexts/AuthContext";
 import { Button } from "./Button";
 
 export const LoginCard = () => {
-  const { login } = useAuth();
+  const { login } = useAuthContext();
 
   return (
     <div className="w-full h-screen flex items-center justify-center">

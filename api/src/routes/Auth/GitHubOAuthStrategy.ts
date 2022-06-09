@@ -27,7 +27,7 @@ export const GitHubOAuthStrategy = () => {
         //Query to check if a user already exists
         const existingUser = await db.user.findUnique({
           where: {
-            email: profile.emails[0].value,
+            username: profile.username 
           },
         });
 

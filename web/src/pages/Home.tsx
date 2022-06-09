@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Navbar } from "../components/Navbar";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuthContext } from "../contexts/AuthContext";
 
 export const Home = () => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user } = useAuthContext();
   let navigate = useNavigate();
 
   return (

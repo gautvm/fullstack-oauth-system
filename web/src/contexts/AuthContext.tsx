@@ -79,6 +79,6 @@ export function AuthContextProvider({
   );
 }
 
-export const useAuth = () => {
+export const useAuthContext = () => {
   return useContext(AuthContext);
 };
