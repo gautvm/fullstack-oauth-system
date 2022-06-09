@@ -11,7 +11,6 @@ import { api } from "../utils/api";
 interface AuthContextEntity {
   user?: UserEntity;
   isAuthenticated: string;
-  loading: boolean;
   error?: any;
 
   login: (provider: "github" | "google") => Promise<void>;
@@ -27,13 +26,9 @@ export function AuthContextProvider({
 }): JSX.Element {
   const [user, setUser] = useState<UserEntity>();
   const [error, setError] = useState<any>();
-  const [loading, setLoading] = useState<boolean>(false);
   const isAuthenticated = localStorage.getItem("isAuthenticated") as string;
 
   useEffect(() => {
-    setLoading(true);
-    console.log(loading);
-
     try {
       (async () => {
         const { data } = await api({
@@ -49,12 +44,9 @@ export function AuthContextProvider({
     } catch (error) {
       setError(error);
     }
-
-    setLoading(false);
   }, []);
 
   const login = async (provider: "github" | "google") => {
-    setLoading(true);
     localStorage.setItem("isAuthenticated", "true");
 
     try {
@@ -64,8 +56,6 @@ export function AuthContextProvider({
     } catch (error) {
       setError(error);
     }
-
-    setLoading(false);
   };
 
   const logout = async () => {
@@ -82,7 +72,7 @@ export function AuthContextProvider({
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, error, login, logout, isAuthenticated }}
+      value={{ user, error, login, logout, isAuthenticated }}
     >
       {children}
     </AuthContext.Provider>
