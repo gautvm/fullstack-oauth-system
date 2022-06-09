@@ -2,6 +2,7 @@ import {
   useState,
   useEffect,
   useContext,
+  useMemo,
   createContext,
   ReactNode,
 } from "react";
@@ -70,9 +71,17 @@ export function AuthContextProvider({
     }
   };
 
+  const contextValue = useMemo(() => ({
+    user,
+    isAuthenticated,
+    error,
+    login,
+    logout
+  }), [user])
+
   return (
     <AuthContext.Provider
-      value={{ user, error, login, logout, isAuthenticated }}
+      value={contextValue}
     >
       {children}
     </AuthContext.Provider>
