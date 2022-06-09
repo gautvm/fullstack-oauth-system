@@ -3,10 +3,9 @@ import { useAuth } from "./contexts/AuthContext";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 
-const PrivateWrapper = ({ children }: { children: JSX.Element }) => {
-  const { user } = useAuth();
-  console.log(user)
-  return user ? children : <Navigate to="/login" />;
+const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+  const isAuthenticated = localStorage.getItem("isAuthenticated")
+  return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 function App() {
@@ -15,23 +14,19 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route
-    path="/private"
-    element={(
-      <PrivateWrapper>
-        <Private />
-      </PrivateWrapper>
-    )}
-  />
+        path="/private"
+        element={
+          <ProtectedRoute>
+            <Private />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
 
 const Private = () => {
-  return (
-    <div>
-      this should be protected
-    </div>
-  )
-}
+  return <div>this should be protected</div>;
+};
 
 export default App;

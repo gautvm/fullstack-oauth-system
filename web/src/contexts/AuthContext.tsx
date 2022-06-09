@@ -12,6 +12,9 @@ interface AuthContextEntity {
   user?: UserEntity;
   loading: boolean;
   error?: any;
+
+  login: (provider: "github" | "google") => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextEntity>({} as AuthContextEntity);
@@ -48,8 +51,35 @@ export function AuthContextProvider({
     setLoading(false);
   }, []);
 
+  const login = async (provider: "github" | "google") => {
+    setLoading(true);
+    localStorage.setItem("isAuthenticated", "true");
+
+    try {
+      window.location.assign(
+        `${process.env.REACT_APP_API_URL}/auth/${provider}`
+      );
+    } catch (error) {
+      setError(error);
+    }
+
+    setLoading(false);
+  };
+
+  const logout = async () => {
+    localStorage.removeItem("isAuthenticated");
+
+    try {
+      window.location.assign(`${process.env.REACT_APP_API_URL}/user/logout`);
+
+      setUser(undefined);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, error }}>
+    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

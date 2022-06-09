@@ -1,6 +1,9 @@
+import { useAuth } from "../contexts/AuthContext";
 import { Button } from "./Button";
 
 export const LoginCard = () => {
+  const { login } = useAuth();
+  
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="bg-white w-96 h-auto rounded-lg pt-8 pb-8 px-8 shadow-lg flex flex-col items-center">
@@ -12,22 +15,14 @@ export const LoginCard = () => {
         <Button
           className="w-full h-12"
           color="black"
-          onClick={() =>
-            window.location.assign(
-              `${process.env.REACT_APP_API_URL}/auth/github`
-            )
-          }
+          onClick={() => login("github")}
         >
           Continue With GitHub
         </Button>
         <Button
           className="w-full h-12"
           color="blue"
-          onClick={() =>
-            window.location.assign(
-              `${process.env.REACT_APP_API_URL}/auth/google`
-            )
-          }
+          onClick={() => login("google")}
         >
           Continue With Google
         </Button>
