@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { Protected } from "./pages/Protected";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const { isAuthenticated } = useAuth();
@@ -10,16 +11,16 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 
 function App() {
   const { isAuthenticated } = useAuth();
-  
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={isAuthenticated ? <Navigate to="/"/> : <Login />} />
       <Route
-        path="/private"
+        path="/protected"
         element={
           <ProtectedRoute>
-            <Private />
+            <Protected />
           </ProtectedRoute>
         }
       />
@@ -27,8 +28,5 @@ function App() {
   );
 }
 
-const Private = () => {
-  return <div>this should be protected</div>;
-};
 
 export default App;
