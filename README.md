@@ -1,6 +1,6 @@
 # Fullstack OAuth System
 
-This is the monorepo for my YouTube tutorial about building a fullstack OAuth system using Passport.js.
+This is a OAuth authentication system that can be used as the foundation of any application. Feel free to fork this repository, and adjust the code to your needs!
 
 ## Project Components
 

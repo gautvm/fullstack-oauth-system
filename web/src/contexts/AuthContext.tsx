@@ -71,13 +71,16 @@ export function AuthContextProvider({
     }
   };
 
-  const contextValue = useMemo(() => ({
-    user,
-    isAuthenticated,
-    error,
-    login,
-    logout
-  }), [user])
+  const contextValue = useMemo(
+    () => ({
+      user,
+      isAuthenticated,
+      error,
+      login,
+      logout,
+    }),
+    [user, error]
+  );
 
   return (
     <AuthContext.Provider
