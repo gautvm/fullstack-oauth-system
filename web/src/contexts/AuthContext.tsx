@@ -7,6 +7,7 @@ import {
   ReactNode,
 } from "react";
 import { UserEntity } from "../entities/UserEntity";
+import { ProviderEntity } from "../entities/ProviderEntity";
 import { api } from "../utils/api";
 
 interface AuthContextEntity {
@@ -14,7 +15,7 @@ interface AuthContextEntity {
   isAuthenticated: string;
   error?: any;
 
-  login: (provider: "github" | "google") => Promise<void>;
+  login: (provider: ProviderEntity) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -47,7 +48,7 @@ export function AuthContextProvider({
     }
   }, []);
 
-  const login = async (provider: "github" | "google") => {
+  const login = async (provider: ProviderEntity) => {
     localStorage.setItem("isAuthenticated", "true");
 
     try {
