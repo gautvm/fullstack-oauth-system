@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Navbar } from "../components/Navbar";
+import { Table } from "../components/Table";
 import { useAuthContext } from "../contexts/AuthContext";
 
 export const Home = () => {
@@ -18,39 +19,7 @@ export const Home = () => {
             Welcome, <span className="font-semibold">{user?.displayName}</span>
           </h1>
           <div className="flex justify-center items-center">
-            <div className="relative overflow-x-auto">
-              <table className="w-full text-sm text-left text-gray-500">
-                <tbody>
-                  <tr className="border">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900"
-                    >
-                      ID
-                    </th>
-                    <td className="px-6 py-4">{user?.id}</td>
-                  </tr>
-                  <tr className="border">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900"
-                    >
-                      Email
-                    </th>
-                    <td className="px-6 py-4">{user?.email}</td>
-                  </tr>
-                  <tr className="border">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900"
-                    >
-                      Name
-                    </th>
-                    <td className="px-6 py-4">{user?.displayName}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <Table />
           </div>
           <Button
             onClick={() => navigate("/protected")}
