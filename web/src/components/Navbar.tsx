@@ -26,12 +26,12 @@ export const Navbar = () => {
                 Logout
               </Button>
             </div>
-              <img
-                src={user.avatarUrl}
-                alt="User Avatar Url"
-                width={35}
-                className="rounded-full"
-              />
+            <img
+              src={user.avatarUrl}
+              alt="User Avatar Url"
+              width={35}
+              className="rounded-full"
+            />
           </div>
         </div>
       ) : (
