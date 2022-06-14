@@ -5,7 +5,7 @@ import { Table } from "../components/Table";
 import { useAuthContext } from "../contexts/AuthContext";
 
 export const Home = () => {
-  const { isAuthenticated, user } = useAuthContext();
+  const { user } = useAuthContext();
   let navigate = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ export const Home = () => {
       <Navbar />
 
       {/* If you want to have protected data with a constant navbar for example */}
-      {isAuthenticated ? (
+      {user ? (
         <div className="p-10">
           <div className="space-y-5">
             <h1 className="text-2xl text-center">

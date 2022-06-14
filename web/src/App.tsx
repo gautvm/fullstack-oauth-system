@@ -5,19 +5,19 @@ import { Login } from "./pages/Login";
 import { Protected } from "./pages/Protected";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const { isAuthenticated } = useAuthContext();
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  const { user } = useAuthContext();
+  return user ? children : <Navigate to="/login" />;
 };
 
 function App() {
-  const { isAuthenticated } = useAuthContext();
+  const { user } = useAuthContext();
 
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
         path="/login"
-        element={isAuthenticated ? <Navigate to="/" /> : <Login />}
+        element={user ? <Navigate to="/" /> : <Login />}
       />
       <Route
         path="/protected"

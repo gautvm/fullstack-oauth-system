@@ -12,7 +12,6 @@ import { api } from "../utils/api";
 
 interface AuthContextEntity {
   user?: UserEntity;
-  isAuthenticated: string;
   error?: any;
 
   login: (provider: ProviderEntity) => Promise<void>;
@@ -28,7 +27,6 @@ export function AuthContextProvider({
 }): JSX.Element {
   const [user, setUser] = useState<UserEntity>();
   const [error, setError] = useState<any>();
-  const isAuthenticated = localStorage.getItem("isAuthenticated") as string;
 
   useEffect(() => {
     try {
@@ -49,8 +47,6 @@ export function AuthContextProvider({
   }, []);
 
   const login = async (provider: ProviderEntity) => {
-    localStorage.setItem("isAuthenticated", "true");
-
     try {
       window.location.assign(
         `${process.env.REACT_APP_API_URL}/auth/${provider}`
@@ -75,7 +71,6 @@ export function AuthContextProvider({
   const contextValue = useMemo(
     () => ({
       user,
-      isAuthenticated,
       error,
       login,
       logout,
