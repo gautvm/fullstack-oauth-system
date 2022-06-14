@@ -44,7 +44,6 @@ export class Server {
     //Log server requests & request method
     this.app.use(async (req, res, next) => {
       console.log(`[${req.method} - ${req.path}]`);
-      res.header("Access-Control-Allow-Origin", "*");
 
       next();
     });
@@ -55,7 +54,7 @@ export class Server {
     //Setting up express session
     this.app.use(
       session({
-        secret: "secret",
+        secret: "",
         resave: true,
         saveUninitialized: true,
         cookie: {

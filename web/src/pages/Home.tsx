@@ -14,19 +14,19 @@ export const Home = () => {
 
       {/* If you want to have protected data with a constant navbar for example */}
       {isAuthenticated ? (
-        <div className="p-5">
-          <h1 className="text-3xl text-center">
-            Welcome, <span className="font-semibold">{user?.displayName}</span>
-          </h1>
-          <div className="flex justify-center items-center">
+        <div className="p-10">
+          <div className="space-y-5">
+            <h1 className="text-2xl text-center">
+              Welcome,{" "}
+              <span className="font-semibold">{user?.displayName}</span>
+            </h1>
+
             <Table />
           </div>
-          <Button
-            onClick={() => navigate("/protected")}
-            className="text-center"
-          >
-            Protected Route
-          </Button>
+
+          <div className="flex justify-center items-center">
+            <Button onClick={() => navigate("/protected")}>Protected Route</Button>
+          </div>
         </div>
       ) : (
         <div className="text-center p-5">Landing Page Content</div>
