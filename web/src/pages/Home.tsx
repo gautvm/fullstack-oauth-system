@@ -21,11 +21,15 @@ export const Home = () => {
               <span className="font-semibold">{user?.displayName}</span>
             </h1>
 
-            <Table />
-          </div>
+            <div className="space-y-10">
+              <Table />
+            </div>
 
-          <div className="flex justify-center items-center">
-            <Button onClick={() => navigate("/protected")}>Protected Route</Button>
+            <div className="flex justify-center items-center">
+              <Button onClick={() => navigate("/protected")}>
+                Protected Route
+              </Button>
+            </div>
           </div>
         </div>
       ) : (
