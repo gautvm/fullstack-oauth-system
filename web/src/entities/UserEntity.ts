@@ -1,6 +1,8 @@
+import { ProviderEntity } from "./ProviderEntity"
+
 export interface UserEntity {
   id: string;
-  provider: string;
+  provider: ProviderEntity;
   email: string;
 
   username: string;
