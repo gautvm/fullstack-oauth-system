@@ -32,8 +32,8 @@ export class Server {
 
   public start() {
     //Listen the server on a local port
-    this.app.listen(process.env.PORT, () => {
-      console.log(`Server started on http://localhost:${process.env.PORT}`);
+    this.app.listen(process.env.API_PORT, () => {
+      console.log(`Server started on http://localhost:${process.env.API_PORT}`);
     });
   }
 
