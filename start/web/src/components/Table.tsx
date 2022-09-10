@@ -1,16 +1,12 @@
-import { useAuthContext } from "../contexts/AuthContext";
-
 export const Table = () => {
-  const { user } = useAuthContext();
-
   return (
     <div className="flex justify-center items-center">
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-500">
           <tbody>
-            <TableRow name="ID" value={user?.id as string} />
-            <TableRow name="Email" value={user?.email as string} />
-            <TableRow name="Name" value={user?.displayName as string} />
+            <TableRow name="ID" value={"ID"} />
+            <TableRow name="Email" value={"Email"} />
+            <TableRow name="Name" value={"Name"} />
           </tbody>
         </table>
       </div>

@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../contexts/AuthContext";
 import { Button } from "./Button";
 
 export const Navbar = () => {
-  const { user, logout } = useAuthContext();
   let navigate = useNavigate();
 
   return (
@@ -18,27 +16,19 @@ export const Navbar = () => {
           </p>
         </div>
       </div>
-      {user ? (
-        <div>
-          <div className="flex items-center gap-2">
-            <div className="pr-4">
-              <Button color="blue" onClick={() => logout()}>
-                Logout
-              </Button>
-            </div>
-            <img
-              src={user.avatarUrl}
-              alt="User Avatar Url"
-              width={35}
-              className="rounded-full"
-            />
+      <div>
+        <div className="flex items-center gap-2">
+          <div className="pr-4">
+            <Button color="blue">Logout</Button>
           </div>
+          <img
+            src={""}
+            alt="User Avatar Url"
+            width={35}
+            className="rounded-full"
+          />
         </div>
-      ) : (
-        <Button color="blue" onClick={() => navigate("/login")}>
-          Login
-        </Button>
-      )}
+      </div>
     </div>
   );
 };

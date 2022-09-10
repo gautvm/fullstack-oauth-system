@@ -1,9 +1,6 @@
-import { useAuthContext } from "../contexts/AuthContext";
 import { Button } from "./Button";
 
 export const LoginCard = () => {
-  const { login } = useAuthContext();
-
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="bg-white w-96 h-auto rounded-lg pt-8 pb-8 px-8 shadow-lg flex flex-col items-center">
@@ -12,18 +9,10 @@ export const LoginCard = () => {
           Please select a way to continue.
         </p>
 
-        <Button
-          className="w-full h-12"
-          color="black"
-          onClick={() => login("github")}
-        >
+        <Button className="w-full h-12" color="black">
           Continue With GitHub
         </Button>
-        <Button
-          className="w-full h-12"
-          color="blue"
-          onClick={() => login("google")}
-        >
+        <Button className="w-full h-12" color="blue">
           Continue With Google
         </Button>
       </div>
