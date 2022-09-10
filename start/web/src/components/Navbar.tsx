@@ -19,7 +19,9 @@ export const Navbar = () => {
       <div>
         <div className="flex items-center gap-2">
           <div className="pr-4">
-            <Button color="blue">Logout</Button>
+            <Button color="blue" onClick={() => navigate("/login")}>
+              Login
+            </Button>
           </div>
           <img
             src={""}
