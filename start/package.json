@@ -1,8 +1,0 @@
-{
-  "name": "fullstack-oauth-system",
-  "private": true,
-  "workspaces": [
-    "api",
-    "web"
-  ]
-}
