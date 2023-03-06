@@ -4,6 +4,8 @@ This is an open-source full-stack OAuth authentication system that's perfect for
 
 The system is highly customizable and easy to use. Simply fork the repository and adjust the code to meet your specific requirements.
 
+If you found this helpful, please consider starring the repo! ⭐ 
+
 ## Setup Instructions
 
 1. Clone the repository to your local machine.
