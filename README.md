@@ -6,6 +6,15 @@ The system is highly customizable and easy to use. Simply fork the repository an
 
 If you found this helpful, please consider starring the repo! ⭐ 
 
+### Project Components
+
+The "start" folder contains the user interface, while the "finished" folder includes all components of the project. The system is built using the following technologies:
+
+| Codebase | Description | Technologies |
+| --- | --- | --- |
+| api | Node.js REST API | Node.js, Express, TypeScript, PostgreSQL, Prisma, Passport.js |
+| web | Next.js Frontend | Node.js, TypeScript, Next.js, Axios |
+
 ## Setup Instructions
 
 1. Clone the repository to your local machine.
@@ -30,12 +39,3 @@ If you found this helpful, please consider starring the repo! ⭐
 10. Visit `http://localhost:3000` in your web browser to see the running application.
 
 Note: This version only includes the UI and does not have a sufficient API, so the app will not work. Please check out the finished branch to see the working version.
-
-### Project Components
-
-The "start" folder contains the user interface, while the "finished" folder includes all components of the project. The system is built using the following technologies:
-
-| Codebase | Description | Technologies |
-| --- | --- | --- |
-| api | Node.js REST API | Node.js, Express, TypeScript, PostgreSQL, Prisma, Passport.js |
-| web | Next.js Frontend | Node.js, TypeScript, Next.js, Axios |
