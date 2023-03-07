@@ -4,10 +4,10 @@ import { Router } from "express";
 export const Logout = () => {
   const router = Router();
 
-  router.get("/user/logout", async (req, res) => {
+  router.get("/user/logout", async (req, res, next) => {
     if (req.user) {
-      req.session.destroy(() => {
-        req.logout();
+      req.logout((err) => {
+        if (err) { return next(err); }
       });
 
       res.redirect(`${process.env.CLIENT_URL!}/login`);
